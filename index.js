@@ -52,21 +52,32 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
-
-
-mongoose.connect("mongodb://localhost:27017/practical1", {
-    useNewUrlParser: "true",
-})
-mongoose.connection.on("error", err => {
-    console.log("err", err)
-})
-mongoose.connection.on("connected", (err, res) => {
-    console.log("mongoose is connected")
+const DB = "mongodb+srv://yash1202:eXweZPuHDPPUHOYa@cluster12.sikfy3a.mongodb.net/Newsmain?retryWrites=true&w=majority";
+mongoose.set('strictQuery', false);
+mongoose.connect(DB, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}).then(() => {
+    console.log("Database Connected");
     insertAdminData();
-})
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`)
+    })
+
+}).catch((e) => {
+    console.log(e);
+});
+
+// mongoose.connect("mongodb://localhost:27017/practical1", {
+//     useNewUrlParser: "true",
+// })
+// mongoose.connection.on("error", err => {
+//     console.log("err", err)
+// })
+// mongoose.connection.on("connected", (err, res) => {
+//     console.log("mongoose is connected")
+//     insertAdminData();
+// });
 const webRouter = require("./routes/web");
 const adminRouter = require("./routes/admin");
 const apiRouter = require("./routes/api");
