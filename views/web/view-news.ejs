@@ -1,0 +1,71 @@
+<%- include('partials/header.ejs') %>
+  <!-- products section -->
+  <section class="products_section">
+    <div class="heading_container">
+      <h2>
+        Perticular News
+      </h2>
+      <!-- <p>
+        Featured Product Just Arrived
+      </p> -->
+    </div>
+    <div class="container layout_padding">
+      <div class="product_container">
+
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+
+            
+            <div class="col-12 col-md-9 col-lg-9 mb-4">
+              <div class="card">
+
+                <div id="carouselExampleIndicators<%= getNews._id %>" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+
+                 
+                    <% getNews.image.forEach(function(imageCount,indexCount) { 
+                      %>
+                      <li data-target="#carouselExampleIndicators<%= getNews._id %>" data-slide-to="<%= getNews._id %>" class="<%= indexCount == 0 ? 'active' : '' %>"></li>
+                    <% }); %>
+                
+                  </ol>
+                  <div class="carousel-inner">
+                    
+                    <% getNews.image.forEach(function(image, imageIndex) { %>
+                      <div class="carousel-item <%= imageIndex == 0 ? 'active' : '' %>">
+                        <img class="d-block w-100" src="/uploads/<%= image %>" alt="First slide">
+                      </div>
+                    <% }); %>
+                 
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators<%= getNews._id %>" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleIndicators<%= getNews._id %>" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title"><%= getNews.title %></h5>
+                  <p class="card-text"><%= getNews.description %></p>
+                </div>
+              </div>
+            </div>
+        
+
+
+          </div>
+        </div>
+        
+
+        
+      </div>
+     
+    </div>
+  </section>
+
+
+  <%- include('partials/footer.ejs') %>

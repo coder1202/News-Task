@@ -1,0 +1,66 @@
+<%- include('partials/header.ejs') %>
+  <!-- products section -->
+  <section class="products_section">
+    <div class="heading_container">
+      <h2>
+        Edit News
+      </h2>
+      <!-- <p>
+        Featured Product Just Arrived
+      </p> -->
+    </div>
+    <div class="container layout_padding">
+      <div class="product_container">
+      </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" id="newsForm" name="newsForm" action="/addNewsPost" enctype="multipart/form-data">
+
+                  <input type="hidden" id="id" name="id" value="<%= getNews._id %>">
+
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-3 col-form-label">Title : </label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value="<%= getNews.title %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">Description : </label>
+                        <div class="col-sm-9">
+                          <textarea class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Enter description"><%= getNews.description %></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-3 col-form-label">Choose Images : </label>
+                        <div class="col-sm-9">
+                          <input type="file" class="" id="images" name="images" multiple  accept="image/png, image/jpeg">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="confirm_password" class="col-sm-3 col-form-label">Start Date : </label>
+                        <div class="col-sm-9">
+                          <input type="date" class="form-control" name="startDate" id="startDate" value="<%= getNews.startDate %>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="confirm_password" class="col-sm-3 col-form-label">End Date : </label>
+                      <div class="col-sm-9">
+                        <input type="date" class="form-control" name="endDate" id="endDate" value="<%= getNews.endDate %>">
+                      </div>
+                  </div>
+               
+                    <div class="text-center mt-5">
+                        <button type="submit" class="btn btn-primary"> Edit News </button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- end products section -->
+
+  <%- include('partials/footer.ejs') %>
+
+  <script type="text/javascript" src="/web/custom/js/add_news.js"></script>

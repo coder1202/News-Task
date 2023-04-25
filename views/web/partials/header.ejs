@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>New Services</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/web/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="/web/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="/web/css/responsive.css" rel="stylesheet" />
+  <link href="/stylesheets/toastr.css" rel="stylesheet" />
+  <link href="/web/custom/css/custom.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" integrity="sha512-fRVSQp1g2M/EqDBL+UFSams+aw2qk12Pl/REApotuUVK1qEXERk3nrCFChouag/PdDsPk387HJuetJ1HBx8qAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" integrity="sha512-gOQQLjHRpD3/SEOtalVq50iDn4opLVup2TF8c4QPI3/NmUPNZOk2FG0ihi8oCU/qYEsw4P6nuEZT2lAG0UNYaw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="/">
+            <!-- <img src="web/images/logo.png" alt="" /> -->
+            <span>
+              News Services
+            </span>
+          </a>
+
+          <div class="navbar-collapse" id="">
+            <div class="container">
+              <div class=" mr-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav justify-content-between ">
+                  <div class="d-none d-lg-flex">
+                    <li class="nav-item">
+                      <a class="nav-link" href="fruit.html">
+                        <%
+                          if(sessionemail){
+                        %>
+                          Login User : <%- sessionemail %>
+                        <%
+                          }
+                        %>
+
+                      </a>
+                    </li>
+                  </div>
+                  <div class=" d-none d-lg-flex">
+
+                  
+                    <%
+                      if(sessionemail){
+                        %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/logout">
+                            Logout
+                          </a>
+                        </li>
+                        <%
+                      }
+                      else
+                      {
+                        %>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/login">
+                            Login
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/signup">
+                            Register
+                          </a>
+                        </li>
+                        <%
+                      }
+                      %>
+
+                      <%
+                      if(sessionuserType == 'Publisher'){
+                        %>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/my-news">
+                            My News
+                          </a>
+                        </li>
+                        <%
+                      }
+                      %>
+                  </div>
+                </ul>
+              </div>
+            </div>
+
+            <div id="myNav" class="overlay">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <div class="overlay-content">
+                <a href="/signup">SignUp</a>
+                <a href="/login">Login</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>

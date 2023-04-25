@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') -%>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+        <div class="wrapper">
+
+            <!-- Preloader -->
+            <div class="preloader flex-column justify-content-center align-items-center">
+                <img class="animation__shake" src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            </div>
+            <%- include('partials/navbar') -%>
+
+                <!-- Main Sidebar Container -->
+                <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                    <!-- Brand Logo -->
+                    <a href="/admin" class="brand-link">
+                        <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                        <span class="brand-text font-weight-light">NewsService Admin</span>
+                    </a>
+
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+
+
+
+
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                                <li class="nav-item">
+                                    <a href="/admin" class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                            News
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /.sidebar-menu -->
+                    </div>
+                    <!-- /.sidebar -->
+                </aside>
+
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <!-- Content Header (Page header) -->
+                    <div class="content-header">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1 class="m-0">Perticular News</h1>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-6">
+                                    <ol class="breadcrumb float-sm-right">
+                                        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                        <li class="breadcrumb-item active">Perticular News</li>
+                                    </ol>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                    <!-- /.content-header -->
+
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <section class="content">
+                                        <div class="container">
+                                            <div class="row d-flex justify-content-center">
+
+
+                                                <div class="col-12 col-md-9 col-lg-9 mb-4">
+                                                    <div class="card">
+
+                                                        <div id="carouselExampleIndicators<%= getNews._id %>" class="carousel slide" data-ride="carousel">
+                                                            <ol class="carousel-indicators">
+
+
+                                                                <% getNews.image.forEach(function(imageCount,indexCount) { 
+                                %>
+                                                                    <li data-target="#carouselExampleIndicators<%= getNews._id %>" data-slide-to="<%= getNews._id %>" class="<%= indexCount == 0 ? 'active' : '' %>"></li>
+                                                                    <% }); %>
+
+                                                            </ol>
+                                                            <div class="carousel-inner">
+
+                                                                <% getNews.image.forEach(function(image, imageIndex) { %>
+                                                                    <div class="carousel-item <%= imageIndex == 0 ? 'active' : '' %>">
+                                                                        <img class="d-block w-100" src="/uploads/<%= image %>" alt="First slide">
+                                                                    </div>
+                                                                    <% }); %>
+
+                                                            </div>
+                                                            <a class="carousel-control-prev" href="#carouselExampleIndicators<%= getNews._id %>" role="button" data-slide="prev">
+                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Previous</span>
+                                                            </a>
+                                                            <a class="carousel-control-next" href="#carouselExampleIndicators<%= getNews._id %>" role="button" data-slide="next">
+                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                <span class="sr-only">Next</span>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">
+                                                                <%= getNews.title %>
+                                                            </h5>
+                                                            <p class="card-text">
+                                                                <%= getNews.description %>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- /.content -->
+                </div>
+                <!-- /.content-wrapper -->
+                <footer class="main-footer">
+                    <strong>Copyright &copy; 2023 <a href="#">NewsService</a>.</strong>
+                </footer>
+
+                <!-- Control Sidebar -->
+                <aside class="control-sidebar control-sidebar-dark">
+                    <!-- Control sidebar content goes here -->
+                </aside>
+                <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+
+        <%- include('partials/footer') -%>
+
+            <script type="text/javascript" src="/admin/js/jquery.validate.js"></script>
+            <script type="text/javascript" src="/admin/js/jquery.validate.min.js"></script>
+            <script type="text/javascript" src="/admin/js/toastr.min.js"></script>
+            <script type="text/javascript" src="/admin/custom/js/add_news.js"></script>
+
+
+
+            <script>
+                $(document).ready(function() {
+
+                    var host = window.location.origin;
+                    let ajaxUrl = host + "/admin/getNews";
+
+                });
+            </script>
+
+    </body>
+
+</html>

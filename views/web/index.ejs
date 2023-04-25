@@ -1,0 +1,130 @@
+<%- include('partials/header.ejs') %>
+    <!-- products section -->
+    <section class="products_section">
+        <div class="heading_container">
+            <h2>
+                Latest News Availabe For You
+            </h2>
+            <!-- <p>
+        Featured Product Just Arrived
+      </p> -->
+        </div>
+        <div class="container layout_padding">
+            <div class="product_container">
+
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <% if (newsData.length > 0) { %>
+
+                            <% newsData.forEach(function(news) { %>
+                                <div class="col-12 col-md-9 col-lg-9 mb-4">
+                                    <div class="card">
+
+                                        <div id="carouselExampleIndicators<%= news._id %>" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+
+
+                                                <% news.image.forEach(function(imageCount,indexCount) { 
+                      %>
+                                                    <li data-target="#carouselExampleIndicators<%= news._id %>" data-slide-to="<%= news._id %>" class="<%= indexCount == 0 ? 'active' : '' %>"></li>
+                                                    <% }); %>
+
+                                            </ol>
+                                            <div class="carousel-inner">
+
+                                                <% news.image.forEach(function(image, imageIndex) { %>
+                                                    <div class="carousel-item <%= imageIndex == 0 ? 'active' : '' %>">
+                                                        <img class="d-block w-100" src="/uploads/<%= image %>" alt="First slide">
+                                                    </div>
+                                                    <% }); %>
+
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators<%= news._id %>" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators<%= news._id %>" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%= news.title %>
+                                            </h5>
+                                            <h6 class="card-title">Publisher :
+                                                <%= news.username %>
+                                            </h6>
+                                            <p class="card-text">
+                                                <%= news.description %>
+                                            </p>
+                                            <a href="/view-news/<%= news._id %>" class="btn btn-primary">View News</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }); %>
+                                    <% } else { %>
+                                        <h1>News not found</h1>
+                                        <% } %>
+
+
+
+                    </div>
+                </div>
+                <!-- <% newsData.forEach(function(news) { %>
+          <a href="">
+            <div class="product_box">
+              <div class="product_img-box">
+                <img src="web/images/p1.png" alt="" />
+              </div>
+              <div class="product_detail-box">
+                <span>
+                  <%= news.title %>
+                </span>
+                <p>
+                  <%= news.description %>
+                </p>
+              </div>
+            </div>
+          </a>
+        <% }); %> -->
+
+
+            </div>
+
+            <div class="product_container">
+                <ul class="pagination">
+                    <% if (currentPage > 1) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="<%= baseUrl %>?page=<%= currentPage - 1 %>&limit=<%= limit %>">&laquo; Previous</a>
+                        </li>
+                        <% } %>
+
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                                <% if (currentPage === i) { %>
+                                    <li class="page-item active">
+                                        <span class="page-link"><%= i %></span>
+                                    </li>
+                                    <% } else { %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<%= baseUrl %>?page=<%= i %>&limit=10">
+                                                <%= i %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% } %>
+
+                                                <% if (currentPage < totalPages) { %>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="<%= baseUrl %>?page=<%= currentPage + 1 %>&limit=10">Next &raquo;</a>
+                                                    </li>
+                                                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- end products section -->
+
+    <%- include('partials/footer.ejs') %>
